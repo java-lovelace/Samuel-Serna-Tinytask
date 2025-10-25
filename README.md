@@ -1,22 +1,22 @@
 # TinyTasks - CRUD Activity
 
-**TinyTasks** es una microaplicación para gestionar tareas, desarrollada con **Spring Boot** y frontend nativo (**HTML + JavaScript + Bootstrap**). El proyecto implementa una arquitectura en capas con datos en memoria y pruebas unitarias completas con JUnit 5.
+**TinyTasks** is a micro-application for task management, developed with **Spring Boot** and native frontend (**HTML + JavaScript + Bootstrap**). The project implements a layered architecture with in-memory data and complete unit testing with JUnit 5.
 
 ---
 
-## 📋 Descripción
+## 📋 Description
 
-TinyTasks permite gestionar una lista básica de tareas con las siguientes operaciones:
-- ✅ Listar todas las tareas
-- ➕ Crear nuevas tareas
-- 🔄 Alternar el estado (completada/pendiente)
-- 🗑️ Eliminar tareas
+TinyTasks allows you to manage a basic task list with the following operations:
+- ✅ List all tasks
+- ➕ Create new tasks
+- 🔄 Toggle status (completed/pending)
+- 🗑️ Delete tasks
 
-El sistema **NO** usa base de datos: los datos viven en memoria usando estructuras de datos concurrentes.
+The system does **NOT** use a database: data lives in memory using concurrent data structures.
 
 ---
 
-## 🛠️ Tecnologías Utilizadas
+## 🛠️ Technologies Used
 
 ### Backend
 - **Java 17**
@@ -24,8 +24,8 @@ El sistema **NO** usa base de datos: los datos viven en memoria usando estructur
   - Spring Web
   - Spring Boot DevTools
   - Lombok
-- **JUnit 5** y **Mockito** para pruebas unitarias
-- **Maven** como gestor de dependencias
+- **JUnit 5** and **Mockito** for unit testing
+- **Maven** as dependency manager
 
 ### Frontend
 - **HTML5**
@@ -35,7 +35,7 @@ El sistema **NO** usa base de datos: los datos viven en memoria usando estructur
 
 ---
 
-## 📁 Estructura del Proyecto
+## 📁 Project Structure
 
 ```
 tinytask/
@@ -78,56 +78,56 @@ tinytask/
 
 ---
 
-## 🚀 Instalación y Ejecución
+## 🚀 Installation and Execution
 
-### Prerrequisitos
-- Java 17 o superior
+### Prerequisites
+- Java 17 or higher
 - Maven 3.6+
 
-### 1. Clonar el repositorio
+### 1. Clone the repository
 ```bash
-git clone <repository-url>
+git clone https://github.com/java-lovelace/Samuel-Serna-Tinytask.git
 cd Samuel-Serna-Tinytask
 ```
 
-### 2. Compilar el proyecto
+### 2. Compile the project
 ```bash
 mvn clean install
 ```
 
-### 3. Ejecutar las pruebas
+### 3. Run the tests
 ```bash
 mvn test
 ```
 
-### 4. Ejecutar la aplicación
+### 4. Run the application
 ```bash
 mvn spring-boot:run
 ```
 
-El backend estará disponible en: **http://localhost:8080**
+The backend will be available at: **http://localhost:8080**
 
-### 5. Acceder al Frontend
-Abre el archivo en tu navegador:
+### 5. Access the Frontend
+Open in your browser:
 ```
 http://localhost:8080/index.html
 ```
 
-O usa Live Server en VS Code para servir los archivos desde `src/main/resources/static/`
+Or use Live Server in VS Code to serve files from `src/main/resources/static/`
 
 ---
 
-## 📡 API REST - Endpoints
+## 📡 REST API - Endpoints
 
 ### Base URL
 ```
 http://localhost:8080/api/todos
 ```
 
-### Endpoints Disponibles
+### Available Endpoints
 
 #### 1. **GET /api/todos**
-Obtiene todas las tareas.
+Gets all tasks.
 
 **Response 200:**
 ```json
@@ -143,7 +143,7 @@ Obtiene todas las tareas.
 ---
 
 #### 2. **POST /api/todos**
-Crea una nueva tarea.
+Creates a new task.
 
 **Request Body:**
 ```json
@@ -152,9 +152,9 @@ Crea una nueva tarea.
 }
 ```
 
-**Validaciones:**
-- `title` es requerido
-- `title` debe tener al menos 3 caracteres
+**Validations:**
+- `title` is required
+- `title` must be at least 3 characters
 
 **Response 201:**
 ```json
@@ -175,7 +175,7 @@ Crea una nueva tarea.
 ---
 
 #### 3. **PUT /api/todos/{id}/toggle**
-Alterna el estado de una tarea (done: true ↔ false).
+Toggles task status (done: true ↔ false).
 
 **Response 200:**
 ```json
@@ -196,7 +196,7 @@ Alterna el estado de una tarea (done: true ↔ false).
 ---
 
 #### 4. **DELETE /api/todos/{id}**
-Elimina una tarea.
+Deletes a task.
 
 **Response 204:** No Content
 
@@ -209,235 +209,235 @@ Elimina una tarea.
 
 ---
 
-## ✅ Historias de Usuario
+## ✅ User Stories
 
-### HU-01: Listar tareas
-**Como** usuario  
-**Quiero** ver todas las tareas registradas  
-**Para** saber qué tengo pendiente
+### US-01: List tasks
+**As** a user  
+**I want** to see all registered tasks  
+**So that** I know what I have pending
 
-**Criterios de aceptación:**
-- ✅ El frontend ejecuta `GET /api/todos`
-- ✅ Se muestra una lista con todas las tareas actuales
-- ✅ Se muestran estadísticas (total y completadas)
-
----
-
-### HU-02: Crear tarea
-**Como** usuario  
-**Quiero** crear una nueva tarea  
-**Para** mantener mis pendientes organizados
-
-**Criterios de aceptación:**
-- ✅ Hay un campo de texto para ingresar el título
-- ✅ Al presionar "Add", se ejecuta `POST /api/todos`
-- ✅ La nueva tarea aparece en la lista
-- ✅ Si el título es inválido, se muestra un mensaje de error
+**Acceptance criteria:**
+- ✅ Frontend executes `GET /api/todos`
+- ✅ A list with all current tasks is displayed
+- ✅ Statistics are shown (total and completed)
 
 ---
 
-### HU-03: Alternar estado
-**Como** usuario  
-**Quiero** marcar o desmarcar una tarea como completada  
-**Para** visualizar mi progreso
+### US-02: Create task
+**As** a user  
+**I want** to create a new task  
+**So that** I can keep my tasks organized
 
-**Criterios de aceptación:**
-- ✅ Al presionar "Complete/Undo", se ejecuta `PUT /api/todos/{id}/toggle`
-- ✅ El estado visual cambia (tachado/normal)
-- ✅ Si la tarea no existe, se muestra un error 404
-
----
-
-### HU-04: Eliminar tarea
-**Como** usuario  
-**Quiero** eliminar una tarea que ya no necesito
-
-**Criterios de aceptación:**
-- ✅ Al presionar "Delete", se muestra confirmación
-- ✅ Se ejecuta `DELETE /api/todos/{id}`
-- ✅ La tarea desaparece de la lista
-- ✅ Si el id no existe, se muestra error 404
+**Acceptance criteria:**
+- ✅ There is a text field to enter the title
+- ✅ When pressing "Add", `POST /api/todos` is executed
+- ✅ The new task appears in the list
+- ✅ If the title is invalid, an error message is shown
 
 ---
 
-### HU-05: Pruebas unitarias
-**Como** desarrollador  
-**Quiero** validar la lógica de negocio  
-**Para** asegurar que el sistema funcione correctamente
+### US-03: Toggle status
+**As** a user  
+**I want** to mark or unmark a task as completed  
+**So that** I can visualize my progress
 
-**Criterios de aceptación:**
-- ✅ Proyecto configurado con JUnit 5 y Mockito
-- ✅ Pruebas del Repository pasan exitosamente
-- ✅ Pruebas del Service pasan exitosamente
-- ✅ Se cubren escenarios positivos y negativos
+**Acceptance criteria:**
+- ✅ When pressing "Complete/Undo", `PUT /api/todos/{id}/toggle` is executed
+- ✅ The visual status changes (strikethrough/normal)
+- ✅ If the task doesn't exist, a 404 error is shown
 
 ---
 
-## 🧪 Pruebas Unitarias
+### US-04: Delete task
+**As** a user  
+**I want** to delete a task I no longer need
 
-### Ejecutar todas las pruebas
+**Acceptance criteria:**
+- ✅ When pressing "Delete", confirmation is shown
+- ✅ `DELETE /api/todos/{id}` is executed
+- ✅ The task disappears from the list
+- ✅ If the id doesn't exist, 404 error is shown
+
+---
+
+### US-05: Unit tests
+**As** a developer  
+**I want** to validate business logic  
+**So that** I can ensure the system works correctly
+
+**Acceptance criteria:**
+- ✅ Project configured with JUnit 5 and Mockito
+- ✅ Repository tests pass successfully
+- ✅ Service tests pass successfully
+- ✅ Positive and negative scenarios are covered
+
+---
+
+## 🧪 Unit Tests
+
+### Run all tests
 ```bash
 mvn test
 ```
 
-### Cobertura de Pruebas
+### Test Coverage
 
 #### TodoRepositoryTest
-- ✅ Generación de IDs autoincrementales únicos
-- ✅ Guardar y recuperar por ID (positivo)
-- ✅ Retornar Optional vacío cuando ID no existe (negativo)
-- ✅ Encontrar todas las tareas
-- ✅ Eliminar por ID (positivo)
-- ✅ Retornar false al eliminar ID inexistente (negativo)
-- ✅ Verificar existencia por ID
-- ✅ Contar tareas
-- ✅ Eliminar todas las tareas
-- ✅ Actualizar tarea existente
+- ✅ Auto-incremental unique ID generation
+- ✅ Save and retrieve by ID (positive)
+- ✅ Return empty Optional when ID doesn't exist (negative)
+- ✅ Find all tasks
+- ✅ Delete by ID (positive)
+- ✅ Return false when deleting non-existent ID (negative)
+- ✅ Check existence by ID
+- ✅ Count tasks
+- ✅ Delete all tasks
+- ✅ Update existing task
 
 #### TodoServiceTest
-- ✅ Crear tarea con título válido (positivo)
-- ✅ Lanzar excepción con título vacío (negativo)
-- ✅ Lanzar excepción con título null (negativo)
-- ✅ Lanzar excepción con título muy corto (negativo)
-- ✅ Lanzar excepción con todo null (negativo)
-- ✅ Establecer done=false al crear
-- ✅ Alternar de false a true (positivo)
-- ✅ Alternar de true a false (positivo)
-- ✅ Retornar vacío al alternar ID inexistente (negativo)
-- ✅ Eliminar tarea existente (positivo)
-- ✅ Retornar false al eliminar ID inexistente (negativo)
-- ✅ Obtener todas las tareas
-- ✅ Obtener tarea por ID (positivo)
-- ✅ Lanzar excepción al obtener ID inexistente (negativo)
+- ✅ Create task with valid title (positive)
+- ✅ Throw exception with empty title (negative)
+- ✅ Throw exception with null title (negative)
+- ✅ Throw exception with too short title (negative)
+- ✅ Throw exception with null todo (negative)
+- ✅ Set done=false when creating
+- ✅ Toggle from false to true (positive)
+- ✅ Toggle from true to false (positive)
+- ✅ Return empty when toggling non-existent ID (negative)
+- ✅ Delete existing task (positive)
+- ✅ Return false when deleting non-existent ID (negative)
+- ✅ Get all tasks
+- ✅ Get task by ID (positive)
+- ✅ Throw exception when getting non-existent ID (negative)
 
 ---
 
-## 🎨 Características del Frontend
+## 🎨 Frontend Features
 
-### Interfaz de Usuario
-- 🎨 Diseño moderno con Bootstrap 5
-- 📱 Responsive (móvil, tablet, desktop)
-- 🌈 Gradiente de fondo atractivo
-- ✨ Animaciones suaves
-- 🔔 Mensajes de error amigables
+### User Interface
+- 🎨 Modern design with Bootstrap 5
+- 📱 Responsive (mobile, tablet, desktop)
+- 🌈 Attractive gradient background
+- ✨ Smooth animations
+- 🔔 Friendly error messages
 
-### Funcionalidades
-- ➕ Agregar tareas con validación en tiempo real
-- ✅ Marcar tareas como completadas (con tachado visual)
-- ♻️ Desmarcar tareas completadas
-- 🗑️ Eliminar tareas con confirmación
-- 📊 Estadísticas en tiempo real (total y completadas)
-- 🔄 Recarga automática de la lista
-- 🎯 Estado vacío cuando no hay tareas
+### Functionalities
+- ➕ Add tasks with real-time validation
+- ✅ Mark tasks as completed (with visual strikethrough)
+- ♻️ Unmark completed tasks
+- 🗑️ Delete tasks with custom modal confirmation
+- 📊 Real-time statistics (total and completed)
+- 🔄 Automatic list reload
+- 🎯 Empty state when no tasks exist
 
 ---
 
-## 🔧 Configuración
+## 🔧 Configuration
 
 ### CORS
-El backend está configurado para aceptar peticiones desde:
+The backend is configured to accept requests from:
 - `http://localhost:5500` (Live Server)
 - `http://localhost:5501`
 - `http://localhost:3000`
 - `http://127.0.0.1:5500`
-- Y variantes
+- And variants
 
-### Puerto del Servidor
-El servidor corre en el puerto **8080** por defecto. Se puede cambiar en `application.properties`:
+### Server Port
+The server runs on port **8080** by default. Can be changed in `application.properties`:
 ```properties
 server.port=8080
 ```
 
 ---
 
-## 📝 Validaciones
+## 📝 Validations
 
 ### Backend
-- Título requerido (no null, no vacío)
-- Título mínimo 3 caracteres
-- Manejo de errores con respuestas HTTP apropiadas
+- Title required (not null, not empty)
+- Minimum title 3 characters
+- Error handling with appropriate HTTP responses
 
 ### Frontend
-- Campo requerido
-- Mínimo 3 caracteres
-- Validación antes de enviar
-- Confirmación antes de eliminar
+- Required field
+- Minimum 3 characters
+- Validation before submitting
+- Confirmation before deleting
 
 ---
 
-## 🏗️ Arquitectura
+## 🏗️ Architecture
 
-### Capas del Backend
+### Backend Layers
 
 #### 1. **Controller Layer** (`TodoController`)
-- Maneja las peticiones HTTP
-- Valida entrada con `@Valid`
-- Retorna respuestas apropiadas
+- Handles HTTP requests
+- Validates input with `@Valid`
+- Returns appropriate responses
 
 #### 2. **Service Layer** (`TodoService`)
-- Contiene la lógica de negocio
-- Valida reglas de negocio
-- Lanza excepciones cuando es necesario
+- Contains business logic
+- Validates business rules
+- Throws exceptions when necessary
 
 #### 3. **Repository Layer** (`TodoRepository`)
-- Gestiona el almacenamiento en memoria
-- Usa `ConcurrentHashMap` para thread-safety
-- Implementa operaciones CRUD básicas
+- Manages in-memory storage
+- Uses `ConcurrentHashMap` for thread-safety
+- Implements basic CRUD operations
 
 #### 4. **Model Layer** (`Todo`)
-- Representa la entidad de dominio
-- Usa Lombok para reducir boilerplate
+- Represents domain entity
+- Uses Lombok to reduce boilerplate
 
 #### 5. **Exception Handling** (`GlobalExceptionHandler`)
-- Captura excepciones globalmente
-- Retorna respuestas de error consistentes
-- Maneja validaciones de Bean Validation
+- Catches exceptions globally
+- Returns consistent error responses
+- Handles Bean Validation validations
 
 ---
 
-## 🎯 Mejores Prácticas Implementadas
+## 🎯 Implemented Best Practices
 
-- ✅ Separación de responsabilidades (SRP)
-- ✅ Inyección de dependencias con constructor
-- ✅ Uso de DTOs para requests
-- ✅ Manejo centralizado de excepciones
-- ✅ Validación en múltiples capas
-- ✅ Thread-safety en repositorio
-- ✅ Pruebas unitarias con cobertura completa
-- ✅ Código limpio y documentado
-- ✅ Naming conventions en inglés
-- ✅ Responses HTTP apropiados
+- ✅ Separation of responsibilities (SRP)
+- ✅ Dependency injection with constructor
+- ✅ Use of DTOs for requests
+- ✅ Centralized exception handling
+- ✅ Multi-layer validation
+- ✅ Thread-safety in repository
+- ✅ Unit tests with complete coverage
+- ✅ Clean and documented code
+- ✅ Naming conventions in English
+- ✅ Appropriate HTTP responses
 
 ---
 
 ## 🐛 Troubleshooting
 
-### El backend no inicia
+### Backend doesn't start
 ```bash
-# Verificar que el puerto 8080 no esté en uso
+# Check that port 8080 is not in use
 netstat -ano | findstr :8080
 
-# Cambiar el puerto en application.properties si es necesario
+# Change port in application.properties if necessary
 server.port=8081
 ```
 
-### CORS errors en el frontend
-- Verifica que el backend esté corriendo
-- Confirma que la URL del frontend está en la lista de CORS permitidos
-- Revisa que uses el puerto correcto en `app.js`
+### CORS errors in frontend
+- Verify that backend is running
+- Confirm that frontend URL is in the allowed CORS list
+- Check that you're using the correct port in `app.js`
 
-### Las pruebas fallan
+### Tests fail
 ```bash
-# Limpiar y recompilar
+# Clean and recompile
 mvn clean test
 
-# Ver logs detallados
+# View detailed logs
 mvn test -X
 ```
 
 ---
 
-## 📚 Recursos Adicionales
+## 📚 Additional Resources
 
 - [Spring Boot Documentation](https://spring.io/projects/spring-boot)
 - [Bootstrap Documentation](https://getbootstrap.com/docs/5.3/)
@@ -446,24 +446,18 @@ mvn test -X
 
 ---
 
-## 👨‍💻 Autor
+## 📄 License
 
-**Samuel Serna**
-
----
-
-## 📄 Licencia
-
-Este proyecto es parte de una actividad académica para Crudzaso.
+This project is part of an academic activity for Crudzaso.
 
 ---
 
-## 🎉 ¡Listo para usar!
+## 🎉 Ready to use!
 
-1. Ejecuta el backend: `mvn spring-boot:run`
-2. Abre el navegador: `http://localhost:8080/index.html`
-3. ¡Comienza a gestionar tus tareas!
+1. Run the backend: `mvn spring-boot:run`
+2. Open browser: `http://localhost:8080/index.html`
+3. Start managing your tasks!
 
 ---
 
-**¡Happy Coding! 🚀**
+**Happy Coding! 🚀**

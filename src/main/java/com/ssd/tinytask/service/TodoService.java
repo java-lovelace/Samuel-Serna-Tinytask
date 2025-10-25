@@ -54,9 +54,10 @@ public class TodoService {
     }
 
     /**
-          * Toggles the done status of a todo.
+     * Toggles the done status of a todo
      * @param id the todo ID
-     * @return an {@link Optional} containing the updated todo if found, or {@link Optional#empty()} if not found
+     * @return the updated todo
+     * @throws TodoNotFoundException if todo doesn't exist
      */
     public Optional<Todo> toggleTodo(Long id) {
         Optional<Todo> todoOpt = todoRepository.findById(id);
