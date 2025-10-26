@@ -2,7 +2,7 @@
 // API CONFIGURATION
 // ========================================
 
-const API_URL = 'http://localhost:8080/api/todos';
+const API_URL = 'https://tinytask.up.railway.app/api/todos' ;
 
 // ========================================
 // DOM ELEMENTS
